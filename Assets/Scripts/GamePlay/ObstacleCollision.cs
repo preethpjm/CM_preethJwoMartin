@@ -4,12 +4,13 @@ public class ObstacleCollision : MonoBehaviour
 {
     public int damageAmount = 10;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+
+        if (collision.gameObject.CompareTag("Player"))
         {
             SfxManager._insatnce.Play_Damage();
-            other.GetComponent<PlayerController>().TakeDamage(damageAmount);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damageAmount);
         }
     }
 }

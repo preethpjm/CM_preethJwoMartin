@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
-    public int coinValue = 1; 
+    public int coinValue = 1;
 
-    private void OnTriggerEnter(Collider other)
+
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             SfxManager._insatnce.Play_Collected();
-            other.GetComponent<PlayerController>().CollectCoin(coinValue);
+            collision.gameObject.GetComponent<PlayerController>().CollectCoin(coinValue);
+
             Destroy(gameObject);
         }
     }

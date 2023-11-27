@@ -26,6 +26,7 @@ public class MainMenuScript : MonoBehaviour
         spawnObject.SetActive(false);
         joystick.SetActive(false);
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Rigidbody>().isKinematic = true;
     }
     public void PlayGame()
     {
@@ -37,6 +38,7 @@ public class MainMenuScript : MonoBehaviour
         Logo.SetActive(false);
         spawnObject.SetActive(true);
         joystick.SetActive(true);
+        player.GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponent<PlayerController>().enabled = true;
     }
     public void AudioToggle()
